@@ -1,0 +1,10 @@
+name = "CREAMext"
+uuid = "6b848077-5ff2-4d64-ac86-18d0da6de843"
+authors = ["ConnectedSystems <takuyai@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+RCall = "6f49c342-dc21-5d91-9882-a32aef131414"
+
+[compat]
+RCall = "0.14.6"
