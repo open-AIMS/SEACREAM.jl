@@ -6,7 +6,8 @@ Programmatic interface to Stage/Execute/Aggregate (SEA) reef ecology models, obt
 indicators, run cost models, and finally obtain economic analyses with
 [CREAM](https://github.com/gbrrestoration/CREAM).
 
-Intended as an extension package for [ADRIA.jl](https://github.com/open-AIMS/ADRIA.jl).
+Intended as an extension package for [ADRIA.jl](https://github.com/open-AIMS/ADRIA.jl),
+with which scenario analyses could be conducted.
 
 Note: This repository does not contain a copy of CREAM, the cost models, or the reef
 ecosystem models. These must be requested from the original authors.
@@ -31,15 +32,16 @@ and `dev`ing the repository (again, in the Julia package manager)
 
 ```julia
 ] dev <path to local copy>
+] build  # Note R installation notes below!
 ```
 
 An R interface package ([RCall.jl](https://github.com/JuliaInterop/RCall.jl)) is used to
 facilitate interop between Julia and R (necessary for CREAM).
 
-An existing install of R may be used. Otherwise an installation of R specific for the Julia
-project environment will be installed via Conda.
+An existing install of R may be used and is highly recommended, especially for Windows.
+due to [this open issue](https://github.com/JuliaInterop/RCall.jl/issues/341).
 
-A customized R install can also be selected by defining a `LocalPreferences.toml` file in a
+An existing R installation can be selected by defining a `LocalPreferences.toml` file in a
 project directory. Copy/paste the entries below and adjust accordingly.
 
 ```toml
@@ -50,6 +52,11 @@ libR = "/path/to/env/lib/R/lib/libR.so"  # Point to the libR.so file on linux or
 
 See the RCall installation [instructions](https://juliainterop.github.io/RCall.jl/stable/installation/)
 for more detail.
+
+Pre-installing all R dependencies will help initial start times.
+Otherwise, the very first build of SEACREAM will require R dependencies to be installed.
+Julia will appear to hang for a long time, as the dependencies has to download and compile
+a lot of C/C++ dependencies.
 
 While pointing to a previously existing install is possible, it is highly recommended to
 rely on a purpose-specific R environment.

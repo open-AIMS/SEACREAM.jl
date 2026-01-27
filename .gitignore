@@ -4,3 +4,5 @@
 sandbox/
 
 deps/build.log
+
+.CondaPkg/
