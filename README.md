@@ -37,6 +37,24 @@ and `dev`ing the repository (again, in the Julia package manager)
 ] build  # Note R installation notes below!
 ```
 
+### Indicative usage
+
+SEACREAM is currently non-functional, however the preliminary workflow would be:
+
+```julia
+using SEACREAM
+
+
+SEACREAM.pipeline(
+    settings_for_RME,
+    cost_model_config,
+    settings_for_CREAM,
+    path_to_shared_output_directory
+)
+```
+
+### R interoperability
+
 An R interface package ([RCall.jl](https://github.com/JuliaInterop/RCall.jl)) is used to
 facilitate interop between Julia and R (necessary for CREAM).
 
