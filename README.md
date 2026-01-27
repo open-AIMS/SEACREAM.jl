@@ -2,15 +2,17 @@
 
 **Note: This is a work in progress and currently non-functional**.
 
-Programmatic interface to Stage/Execute/Aggregate (SEA) reef ecology models, obtain
-indicators, run cost models, and finally obtain economic analyses with
-[CREAM](https://github.com/gbrrestoration/CREAM).
+SEACREAM is a workflow orchestration package to seamlessly Stage/Execute/Aggregate (SEA)
+reef ecology model results, obtain indicators, run cost models, and finally obtain economic
+analyses with [CREAM](https://github.com/gbrrestoration/CREAM).
 
-Intended as an extension package for [ADRIA.jl](https://github.com/open-AIMS/ADRIA.jl),
-with which scenario analyses could be conducted.
+It is intended as an extension package for
+[ADRIA.jl](https://github.com/open-AIMS/ADRIA.jl), with which scenario analyses could be
+conducted.
 
 Note: This repository does not contain a copy of CREAM, the cost models, or the reef
-ecosystem models. These must be requested from the original authors.
+ecosystem models. These must be requested from the original authors or copies cloned
+from their respective repositories.
 
 ## Setup
 
