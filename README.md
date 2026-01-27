@@ -2,7 +2,7 @@
 
 **Note: This is a work in progress and currently non-functional**.
 
-SEACREAM is a workflow orchestration package to seamlessly Stage/Execute/Aggregate (SEA)
+SEACREAM is a workflow orchestration package to seamlessly Stage/Evaluate/Aggregate (SEA)
 reef ecology model results, obtain indicators, run cost models, and finally obtain economic
 analyses with [CREAM](https://github.com/gbrrestoration/CREAM).
 
