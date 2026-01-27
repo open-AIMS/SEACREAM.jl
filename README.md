@@ -70,8 +70,9 @@ Rhome = "/path/to/env/lib/R"  # This should point to the directory where R is in
 libR = "/path/to/env/lib/R/lib/libR.so"  # Point to the libR.so file on linux or R.dll on Windows
 ```
 
-See the RCall installation [instructions](https://juliainterop.github.io/RCall.jl/stable/installation/)
-for more detail.
+See the RCall installation
+[instructions](https://juliainterop.github.io/RCall.jl/stable/installation/) for more
+detail.
 
 Pre-installing all R dependencies will help initial start times.
 Otherwise, the very first build of SEACREAM will require R dependencies to be installed.
