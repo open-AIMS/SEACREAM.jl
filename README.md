@@ -1,10 +1,15 @@
-# CREAMext.jl
+# SEACREAM.jl
 
-Extension package for [ADRIA.jl](https://github.com/open-AIMS/ADRIA.jl) intended to act as
-an interface to [CREAM](https://github.com/gbrrestoration/CREAM).
+**Note: This is a work in progress and currently non-functional**.
 
-Note: This repository does not contain a copy of CREAM nor the data it depends on. These
-must be requested from the original authors.
+Programmatic interface to Stage/Execute/Aggregate (SEA) reef ecology models, obtain
+indicators, run cost models, and finally obtain economic analyses with
+[CREAM](https://github.com/gbrrestoration/CREAM).
+
+Intended as an extension package for [ADRIA.jl](https://github.com/open-AIMS/ADRIA.jl).
+
+Note: This repository does not contain a copy of CREAM, the cost models, or the reef
+ecosystem models. These must be requested from the original authors.
 
 ## Setup
 
@@ -13,13 +18,13 @@ The package is currently not registered but can be installed from the github rep
 With the Julia package manager:
 
 ```julia
-] add https://github.com/open-AIMS/CREAMext.jl
+] add https://github.com/open-AIMS/SEACREAM.jl
 ```
 
 Alternatively, a development copy can be set up by git cloning a local copy:
 
 ```bash
-$ git clone https://github.com/open-AIMS/CREAMext.jl
+$ git clone https://github.com/open-AIMS/SEACREAM.jl
 ```
 
 and `dev`ing the repository (again, in the Julia package manager)
@@ -29,7 +34,7 @@ and `dev`ing the repository (again, in the Julia package manager)
 ```
 
 An R interface package ([RCall.jl](https://github.com/JuliaInterop/RCall.jl)) is used to
-facilitate interop between Julia and R.
+facilitate interop between Julia and R (necessary for CREAM).
 
 An existing install of R may be used. Otherwise an installation of R specific for the Julia
 project environment will be installed via Conda.
@@ -51,3 +56,43 @@ rely on a purpose-specific R environment.
 
 The initial build of the package will attempt to install dependent R libraries as well.
 Thus, installation requires an internet connection and may take some time.
+
+### Python Interoperability
+
+A Python interface package ([PythonCall.jl](https://github.com/JuliaPy/PythonCall.jl)) is
+used to facilitate interop between Julia and Python.
+
+An existing install of Python may be used. Otherwise an installation of Python specific for
+the Julia project environment will be installed via CondaPkg.
+
+To use an existing Python installation, set environment variables before loading PythonCall
+for the first time:
+```julia
+ENV["JULIA_CONDAPKG_BACKEND"] = "Null"
+ENV["JULIA_PYTHONCALL_EXE"] = "/path/to/python"  # Point to your Python executable
+using PythonCall
+```
+
+To find the Python path, run `which python` (Linux/Mac) or `where python` (Windows) in a
+terminal.
+
+Alternatively, these can be set persistently in a `LocalPreferences.toml` file in the
+project directory:
+```toml
+[PythonCall]
+executable = "/path/to/python"
+
+[CondaPkg]
+backend = "Null"
+```
+
+See the PythonCall [configuration documentation](https://juliapy.github.io/PythonCall.jl/stable/pythoncall/#Configuration)
+for more detail.
+
+While pointing to a previously existing install is possible, it is highly recommended to
+rely on a purpose-specific Python environment.
+
+### Installation Notes
+
+The initial build of the package will attempt to install dependent R and Python libraries
+as well. Thus, installation requires an internet connection and may take some time.
