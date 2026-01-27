@@ -1,41 +1,44 @@
+using CondaPkg
 using RCall
 
-function main()
+function handle_deps()
+    # Note: single quotes in package list is necessary - installation fails otherwise.
+    #       DO NOT use double quotes.
     pkg_list = """
     install.packages(c(
-        "dplyr",
-        "data.table",
-        "triangle",
-        "mc2d",
-        "fitdistrplus",
-        "logspline",
-        "tidyverse",
-        "readxl",
-        "profvis",
-        "tools",
-        "tidyr",
-        "magrittr",
-        "stringr",
-        "ggplot2",
-        "dampack",
-        "kableExtra",
-        "hrbrthemes",
-        "viridis",
-        "ggstatsplot",
-        "rstantools",
-        "magick",
-        "lpSolve",
-        "Benchmarking",
-        "MASS",
-        "sf",
-        "rnaturalearth",
-        "rnaturalearthdata",
-        "Hmisc",
-        "scales",
-        "EIAdata",
-        "gdata",
-        "ggmap"
-    ), repos="https://cloud.r-project.org");
+        'dplyr',
+        'data.table',
+        'triangle',
+        'mc2d',
+        'fitdistrplus',
+        'logspline',
+        'tidyverse',
+        'readxl',
+        'profvis',
+        'tools',
+        'tidyr',
+        'magrittr',
+        'stringr',
+        'ggplot2',
+        'dampack',
+        'kableExtra',
+        'hrbrthemes',
+        'viridis',
+        'ggstatsplot',
+        'rstantools',
+        'magick',
+        'lpSolve',
+        'Benchmarking',
+        'MASS',
+        'sf',
+        'rnaturalearth',
+        'rnaturalearthdata',
+        'Hmisc',
+        'scales',
+        'EIAdata',
+        'gdata',
+        'ggmap'
+    ), repos='https://cloud.r-project.org');
     """
 
     if Sys.iswindows()
@@ -46,15 +49,20 @@ function main()
         ENV["PATH"] *= libR_dir * ";"
 
         # Install dependencies by calling out to external R
-        Rexe_path = replace(joinpath(libR_dir, "R.exe"), "\\"=>"/")
-        pkg_install = replace(pkg_list, "\n"=>"", "\\"=>"")
-        run(`$(Rexe_path) -e $(pkg_install)`)
+        Rexe_path = joinpath(libR_dir, "R.exe")
+
+        # Flatten to a single line for use in CLI.
+        pkg_install = replace(pkg_list, "\n" => " ", r"\s+" => " ")
+        run(`$Rexe_path -e $pkg_install`)
     else
         # On other platforms, R libraries should be able to install fine
         R"""
         $(pkg_list)
         """
     end
+
+    # @info "Resolving Python dependencies..."
+    CondaPkg.resolve()
 end
 
-main()
+handle_deps()
