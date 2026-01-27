@@ -6,21 +6,20 @@ using Conda, RCall, PythonCall
 Invoke ReefMod Engine runs.
 """
 function run_rme()
-    @info "Would run RME..."
+    @info "Would run RME via ReefModEngine.jl!"
 end
 
 """
 Extract indicators and run cost (spreadsheet) models.
 """
 function run_cost_model()
-    @info "Would run cost models..."
 
     # Import numpy via PythonCall
-    np = pyimport("numpy")
+    # np = pyimport("numpy")
 
     # Create dummy cost data using Python
     py_code = """
-    print("Some python output...")
+    print("Output from Python!")
     # def generate_cost_data():
     #     import numpy as np
     #     return {
@@ -50,14 +49,13 @@ Conduct economic analyses.
 function run_cream()
     # data_dir, indicator_data_dir, output_dir
 
-    @info "Running CREAM economic analysis..."
     # @info "  Data directory: $data_dir"
     # @info "  Indicator directory: $indicator_data_dir"
     # @info "  Output directory: $output_dir"
 
     # Execute R code to generate dummy CREAM output
     R"""
-    print("Some R output...")
+    print("Output from R!")
     # cream_results <- list(
     #     npv = 5000000.0,
     #     benefit_cost_ratio = 2.5,
