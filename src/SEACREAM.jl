@@ -82,6 +82,8 @@ function run_cream()
     # Retrieve results from R
     # results = R"cream_results"
     # return results
+
+    return nothing
 end
 
 function pipeline()
